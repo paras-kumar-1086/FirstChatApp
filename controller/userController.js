@@ -200,11 +200,11 @@ module.exports.deleteProfile = async (req, res) => {
         let groupPicArr = [];
         groupAdminChats.map((chat) => { groupPicArr.push(chat.groupPic) });
         const filtered = groupPicArr.filter(pic => pic !== 'default-group.svg');
-        filtered.map(async (pic) => { await unlinkAsync(path.join(__dirname, '../profile_pictures/', pic)); })
+        filtered.map(async (pic) => { await unlinkAsync(path.join(__dirname, '../images/profile_pictures/', pic)); })
     }
 
     if (profilePicUrl && profilePicUrl !== 'default.svg') {
-        await unlinkAsync(path.join(__dirname, '../profile_pictures/', profilePicUrl));
+        await unlinkAsync(path.join(__dirname, '../images/profile_pictures/', profilePicUrl));
     }
 
     const removedMessages = await Messages.deleteMany({ chat: allChats });
