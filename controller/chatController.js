@@ -203,7 +203,7 @@ module.exports.deleteChat = async (req, res) => {
   const groupPicUrl = chat.groupPic;
 
   if (groupPicUrl && groupPicUrl !== 'default-group.svg') {
-    await unlinkAsync(path.join(__dirname, '../profile_pictures/', groupPicUrl));
+    await unlinkAsync(path.join(__dirname, '../images/profile_pictures/', groupPicUrl));
   }
   const removed = await Chat.deleteOne({ _id: chatId });
   const removedMessages = await Messages.deleteMany({ chat: chatId });
